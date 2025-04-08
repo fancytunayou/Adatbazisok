@@ -1,7 +1,7 @@
 ﻿# 8. gyakorlat
 
 ## Előkészületek
-
++ ezt a fájlt, ha previewba akarod látni, ctrl + shift + v
 ### MongoDB
 + Regisztráljunk a MongoDB Atlas oldalán (https://www.mongodb.com/cloud/atlas/register)
 + Telepítsük fel a MongoDB Compass programot (csak saját magunknak)
@@ -18,14 +18,27 @@ A megoldásokat - ahol kódot kell írni - másoljuk be a ```js és a ``` közö
 a Készítsen lekérdezést, amely csak az user_id, firstName és lastname oszlopokat jeleníti meg!
 
 ```js
-
+db.collection.find({},
+{
+  _id: 0,
+  user_id: 1,
+  firstName: 1,
+  lastname: 1
+})
 ```
 
 
-2.	A MongoPlayground-on az előző feladatban létrehozott gyűjteményből kérdezze le a Grace keresztnevű felhasználó email-címét és jelszavát (csak ez a két mező jelenjen meg)!
+2.	A MongoPlayground-on az előző feladatban létrehozott gyűjteményből kérdezze le a Grace keresztnevű felhasználó email-címét és jelszavát (csak ez a két mező jelenjen meg)! (a szűrőfeltételeket, az első kapcsos zárójelbe kell rakni!)
 
 ```js
-
+db.collection.find({
+  firstName: "Grace"
+},
+{
+  _id: 0,
+  email: 1,
+  password: 1
+})
 ```
 
 
@@ -43,7 +56,7 @@ a. A listában csak azok a dokumentumok jelenjenek meg, ahol a tanuló azonosít
 
    
 ```js
-
+{"student_id": {"$gte":0, "$lte":200}, "class_id"}
 ```
 
 OPCIONÁLISAN: a feladat a MongoDB Compass-ban, a VS Code-ban vagy a MongoDB Shell-ben is megoldható
@@ -76,7 +89,8 @@ b.  A lista legyen sorbarendezve a főzési idő szerint csökkenő sorrendben! 
 c. A listában ne jelenjenek meg az ingredients és a rating mezők (Project szakasznál kell beállítani)!
 
 ```js
-
+{likes_count: {$gt: 2}}
+{cook_time_time: -1}
 ```
 
 OPCIONÁLISAN: a feladat a VS Code-ban vagy a MongoDB Shell-ben is megoldható
@@ -84,6 +98,7 @@ OPCIONÁLISAN: a feladat a VS Code-ban vagy a MongoDB Shell-ben is megoldható
 8. Az előző feladatban létrehozott lekérdezésre hajtsa végre az Explain Plan funkciót!
 
 ```js
+db.receptek.find({"likes_count": {$gt: 2}}).sort({"cook_time": -1})
 
 ```
 
@@ -111,7 +126,7 @@ a. A megjelenés kellően szép (json-szerű) legyen!
 
 
 ```js
-
+db.receptek.find({"title":{$regex: /Tacos/}}).pretty
 ```
 OPCIONÁLISAN: a feladat a MongoDB Compass-ban, vagy a VS Code-ban is megoldható
 
