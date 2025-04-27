@@ -10,13 +10,11 @@ CREATE TABLE dbo.Ugyfel_Mask
 )
 
 INSERT INTO dbo.Ugyfel_Mask ([LOGIN], EMAIL, NEV, SZULEV, NEM, CIM)
-SELECT [LOGIN], 
-        EMAIL, 
-        NEV, 
-        SZULEV, 
-        NEM, 
-        CIM 
-FROM dbo.Ugyfel
+VALUES 
+('adam1', 'ádám.kiss@mail.hu', 'Kiss Ádám', 1991, 'F', '5630 Békés, Szolnoki út 8.'),
+('adam3', 'adam3@gmail.com', 'Barkóci Ádám', 1970, 'F', '3910 Tokaj, Dózsa György utca 37.'),
+('adam4', 'ádám.bieniek@mail.hu', 'Bieniek Ádám', 1976, 'F', '8630 Balatonboglár, Juhászföldi út 1.'),
+('agnes', 'agnes@gmail.com', 'Lengyel Ágnes', 1979, 'N', '5200 Törökszentmiklós, Deák Ferenc út 5.');
 
 
 CREATE USER Maskuser WITHOUT LOGIN;
