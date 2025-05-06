@@ -1,4 +1,4 @@
-﻿# 8. gyakorlat
+# 8. gyakorlat
 
 ## Előkészületek
 
@@ -193,3 +193,27 @@ d. Az utasítást adja meg válaszként
 
 ```
 
+ZH GYAK FELADATOK
+
+1. 
+```js
+match (p:Person)-[a:ACTED_IN]->(m:Movie)
+where m.released>1960
+return p.name as Név, m.title as Cím, m.released as Év
+order by m.released desc
+```
+2.
+```js
+match (p:Person)-[a:ACTED_IN]->(m:Movie)
+where m.released>1970 or m.title =~ '.*Love.*'
+return p.name as Név, m.title as Cím
+order by m.title desc
+```
+3. 
+```js
+match (p:Person)-[a:ACTED_IN]->(m:Movie)
+WITH m, count(p) AS szereplők
+return szereplők, m.title as cím
+order by szereplők desc
+limit 1
+```
