@@ -1,0 +1,15 @@
+Csoporttagok:
+Bendes Kitti Enikő, Erdei Nóra, Velez Veronika
+
+Leírás:
+Az adatbázis egy autósiskola működését mutatja be, ami tárolja a tanulók adatait, oktatók elérhetőségét, képzésekhez használt járműveket, órákat, vizsgákat és a vizsgákon való részvétel eredményeit. Segítségével az iskolavezetés könnyen követheti kik a beiratkozott tanulók, mely oktató mely járművet használja, mikor tartottak órát, ki és mikor vizsgázott, valamint sikeresen vagy sikertelenül teljesített-e.
+
+Táblák és kulcsaik:
+Tanulo - elsődleges kulcs: tanulo_id
+Oktato - elsődleges kulcs: oktato_id
+Jarmu - elsődleges kulcs: jarmu_id; másodlagos kulcs: Oktato(oktato_id)
+Ora - elsődleges kulcs: ora_id; másodlagos kulcs: Tanulo(tanulo_id), Oktato(oktato_id), Jarmu(jarmu_id)
+Vizsga - elsődleges kulcs: vizsga_id
+VizsgaReszvetel - elsődleges kulcs: (vizsga_pk, tanulo_pk) -> összetett kulcs; másodlagos kulcs: Vizsga(vizsga_id), Tanulo(tanulo_id)
+
+A lekérdezések leírása a lekérdezések mellett található.
