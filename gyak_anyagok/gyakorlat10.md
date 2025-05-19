@@ -1,4 +1,4 @@
-﻿# 10. gyakorlat - feladatok
+# 10. gyakorlat - feladatok
 
 
 
@@ -65,7 +65,7 @@ b. A halmazokat létrehozó, és a metszetüket lekérdező utasításokat (3 ut
 ```js
 SADD numbers1 10 20 30 40 50 60
 SADD numbers2 15 30 45 60
-sinter 30 60?
+sinter numbers1 numbers2
 ```
 
 
@@ -94,7 +94,7 @@ SCAN 0 MATCH *a* COUNT 200
 a. A szükséges utasítást adja meg válaszként!
 
 ```js
-
+ZRANGE szemelyek 0 -1 WITHSCORES REV
 ```
 
 10.\ A redis-cli-ben a korábban létrehozott szemelyek sorted set-ben növeljük Juli életkorát 10 évvel, majd ismét listázzuk a szemelyek sorted set elemeit!
@@ -102,7 +102,8 @@ a. A szükséges utasítást adja meg válaszként!
 a. A szükséges utasításokat (két utasítás) adjuk meg válaszként!
 
 ```js
-
+ZINCRBY szemelyek 10 Juli
+ZRANGE szemelyek 0 -1
 ```
 
 11.\ A redis-cli-ben hajtsuk végre a következő adatmódosításokat:
@@ -112,7 +113,8 @@ b. Töröljük az auto kulcsot
 c. A szükséges 2 utasítást adjuk meg válaszként!
 
 ```js
-
+RENAME numbers1 numbers01
+del auto
 ```
 
 12.\ Hozza létre mezőnként és soronként külön kulcsok segítségével a dolgozo tábla következő rekordjait:
@@ -124,7 +126,8 @@ Kiss Ilona   konyvelo                2
 a. A szükséges utasításokat tartalmazó képernyőrészt adja meg válaszként kép formájában!
 
 ```js
-
+HSET dolgozo1 nev "Nagy Eva" munkakor titkarno kod 1
+HSET dolgozo2 nev "Kiss Ilona" munkakor konyvelo kod 2
 ```
 
 13.\ A redis-cli-ben hozzuk létre a projekt táblának megfelelő adatszerkezetet soronként és mezőnként külön kulcsokkal! A kulcsok megadásánál ügyeljünk a projekt és a dolgozo tábla közötti kapcsolatra!
@@ -136,7 +139,8 @@ projektkod    projektnev     dolgozokod
 a. A szükséges utasításokat adjuk meg válaszként kép formájában!
 
 ```js
-
+HSET projekt1 projektkod 1 projektnev EURO-33 dolgozokod 1
+HSET projekt2 projektkod 3 projektnev TRANS-22 dolgozokod 2
 ```
 
 14.\ A redis-cli-ben hozzuk létre a dolgozo tábla (ld. 12-es feladat) nev oszlopának megfelelő adatszerkezetet dolgozo_nev néven!
@@ -144,7 +148,8 @@ a. A szükséges utasításokat adjuk meg válaszként kép formájában!
 a. A szükséges utasítást adja meg válaszként!
 
 ```js
-
+HSET dolgozo_nev 1 "Nagy Eva"
+HSET dolgozo_nev 2 "Kiss Ilona"
 ```
 
 15.\ A redis-cli-ben listázza a létező kulcsok számát a dbsize utasítás segítségével!
@@ -152,5 +157,5 @@ a. A szükséges utasítást adja meg válaszként!
 a. Az utasítást másolja be a válaszhoz!
 
 ```js
-
+DBSIZE
 ```
