@@ -159,3 +159,18 @@ a. Az utasítást másolja be a válaszhoz!
 ```js
 DBSIZE
 ```
+
+\ZH GYAK 4 FELADAT
+
+1. Hozza létre REDIS Cloud parancssorban következő táblákat:
+· IRO(ID, nev, nemzetiseg)
+· KONYV(ID, cim, mufaj, IRO_ID)
+Vigyen fel táblánként legalább 2-2 sornyi adatot!
+A megfelelő utasításokat adja meg válaszként!
+
+```js
+HSET iro1 id 1 nev "Jókai Mór" nemzetiseg "magyar"
+HSET iro2 id 2 nev "Franz Kafka" nemzetiseg "osztrák"
+HSET konyv1 id 1 cim "Az arany ember" mufaj "regény" iro_id 1
+HSET konyv2 id 2 cim "Az átváltozás" mufaj "novella" iro_id 2
+```
