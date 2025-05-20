@@ -211,6 +211,20 @@ c. A szükséges 2 utasítást adjuk meg válaszként!
 ```js
 
 ```
+ZH GYAK 4
+1.A DataStax Astra minta adatai kozül a movies_and_tv tablajából
+kérdezzük le, hogy melyik 10 film kapott a legjobb értékelést 2010-
+ben!
+Csak a filmek cime jelenjen meg!
+
+```js
+SELECT title 
+FROM movies_and_tv 
+WHERE type = 'Movie' AND release_year = 2010 
+ORDER BY avg_rating DESC 
+LIMIT 10;
+
+```
 
 
 
