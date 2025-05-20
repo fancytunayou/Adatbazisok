@@ -217,3 +217,12 @@ return szereplők, m.title as cím
 order by szereplők desc
 limit 1
 ```
+
+ZH GYAK 4
+
+1. Jelenítsük meg azokat a személyeket, akik nem szerepeltek egy filmben Tom Hanks-szel.
+```js
+MATCH (p:Person)
+WHERE NOT ( (p)-[:ACTED_IN]->(:Movie)<-[:ACTED_IN]-(:Person {name: "Tom Hanks"}) )
+RETURN DISTINCT p.name
+```
