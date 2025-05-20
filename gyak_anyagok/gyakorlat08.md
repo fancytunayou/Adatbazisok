@@ -292,3 +292,22 @@ db.movies.aggregate([
   {$sort:{_id:1}}
 ])
 ```
+ZH GYAK 4 FELADATOK
+1. A MongoDB Atlas sample_mflix adatbazis comments gyujtemenyebol
+kérdezzük le, hogy mely felhasználók (email) írtak 10-nél több
+kommentet?
+```js
+db.comments.aggregate([
+  {
+    $group: {
+      _id: "$email",
+      count: { $sum: 1 }
+    }
+  },
+  {
+    $match: {
+      count: { $gt: 10 }
+    }
+  }
+]);
+```
